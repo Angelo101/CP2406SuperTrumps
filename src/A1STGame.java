@@ -74,7 +74,6 @@ public class A1STGame {
         game.setHumanPlayer();
         STPlayer humanplayer = game.getHumanPlayer();
         showPlayer(humanplayer);
-        game.playTheGame();
         return game;
 
     }
@@ -101,7 +100,6 @@ public class A1STGame {
 
         Scanner userInput = new Scanner(System.in);
         int choice = userInput.nextInt();
-        System.out.println("TEstk");
         while (choice != 1 && choice != 2){
             System.out.println("Please choose 1 or 2");
             choice = userInput.nextInt();
