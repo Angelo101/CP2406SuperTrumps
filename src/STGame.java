@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -6,16 +7,20 @@ import java.util.Random;
 public class STGame {
 
     private static final int NUM_CARDS_TO_DEAL = 8 ;
-    private int numPlayers = A1STGame.getNumPlayers();
+    private int numPlayers;
     public int dealerId;
     public STPlayer[] players;
+    private STDeck deck;
+    private int humanPlayerID;
 
     public STGame (int numPlayers) {
         this.numPlayers = numPlayers;
+        deck = new STDeck();
     }
     public int selectDealer() {
         Random rand = new Random();
-        dealerId = rand.nextInt(numPlayers - 2) + 2;
+        dealerId = rand.nextInt(numPlayers - 1) + 1;
+        System.out.println("Dealer ID = " + dealerId);
         return dealerId;
 
         }
@@ -25,10 +30,22 @@ public class STGame {
 
     public void dealRandomCards() {
         players = new STPlayer[numPlayers];
+        for (int i = 0; i < numPlayers; i++){
+            players[i] = new STPlayer("Player ID =" + i);
+        }
+
         for (STPlayer player : players) {
-            STCard cards = DeckBuilder.dealCards (NUM_CARDS_TO_DEAL);
-            player.setCards;
+            ArrayList<STCard> cards = deck.dealCards(NUM_CARDS_TO_DEAL);
+            player.setCards(cards);
+
 
         }
+
+    }
+    public void setHumanPlayer() {
+        humanPlayerID = 0;
+    }
+    public STPlayer getHumanPlayer(){
+        return players[humanPlayerID];
     }
 }

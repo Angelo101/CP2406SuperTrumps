@@ -4,14 +4,12 @@ import java.util.Scanner;
  * Created by Angelo Minchio on 02-Sep-16.
  */
 public class A1STGame {
-    private static final Object NEW_GAME = 1;
+//    private static final Object NEW_GAME = 1;
 
    public static void main(String[] args) {
         showWelcome();
         showMenu();
-        int option = getUSerMenuChoice();
-
-
+        int option = getUserMenuChoice();
 
         switch (option){
             case 1: startNewGame();
@@ -60,9 +58,8 @@ public class A1STGame {
 
     }
 
-    { //change to switch
-            startNewGame();
-        }
+
+
 
 
     private static void startNewGame() {
@@ -70,27 +67,39 @@ public class A1STGame {
         STGame game = new STGame (numPlayers);
         game.selectDealer();
         game.dealRandomCards();
+        game.setHumanPlayer();
+        STPlayer humanplayer = game.getHumanPlayer();
+        showPlayer(humanplayer);
+
     }
 
+    private static void showPlayer(STPlayer humanplayer) {
+        System.out.println("Human Player=" + humanplayer);
+    }
+
+
     public static int getNumPlayers() {
+        System.out.println("Please choose 2, 4 or 4 players");
         Scanner userInput = new Scanner(System.in);
         int choice = userInput.nextInt();
         while (choice != 2 && choice != 3 && choice != 4){
-            System.out.printf("Please choose 2, 3 or 4 players");
-            userInput.nextInt();
+            System.out.println("Please choose 2, 3 or 4 players");
+            choice = userInput.nextInt();
         }
         return choice;
 
 
     }
 
-    private static int getUSerMenuChoice() {
+    private static int getUserMenuChoice() {
 
         Scanner userInput = new Scanner(System.in);
         int choice = userInput.nextInt();
+        System.out.println("TEstk");
         while (choice != 1 && choice != 2){
-            System.out.printf("Please choose 1 or 2");
-            userInput.nextInt();
+            System.out.println("Please choose 1 or 2");
+            choice = userInput.nextInt();
+
         }
         return choice;
     }

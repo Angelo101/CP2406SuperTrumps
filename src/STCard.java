@@ -3,5 +3,12 @@
  */
 public class STCard {
     private int id;
-    public STCard
+
+    public STCard(int id){
+    this.id = id;
+    }
+    @Override
+    public  String toString(){
+        return "id=" + id;
+    }
 }
