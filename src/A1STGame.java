@@ -9,10 +9,14 @@ public class A1STGame {
    public static void main(String[] args) {
         showWelcome();
         showMenu();
+       STGame game;
+
         int option = getUserMenuChoice();
 
         switch (option){
-            case 1: startNewGame();
+            case 1:
+                game = startNewGame();
+                game.playTheGame();
                 break;
             case 2: instructions();
                 break;
@@ -62,7 +66,7 @@ public class A1STGame {
 
 
 
-    private static void startNewGame() {
+    private static STGame startNewGame() {
         int numPlayers = getNumPlayers();
         STGame game = new STGame (numPlayers);
         game.selectDealer();
@@ -70,6 +74,8 @@ public class A1STGame {
         game.setHumanPlayer();
         STPlayer humanplayer = game.getHumanPlayer();
         showPlayer(humanplayer);
+        game.playTheGame();
+        return game;
 
     }
 

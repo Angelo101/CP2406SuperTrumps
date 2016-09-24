@@ -19,7 +19,7 @@ public class STGame {
     }
     public int selectDealer() {
         Random rand = new Random();
-        dealerId = rand.nextInt(numPlayers - 1) + 1;
+        dealerId = rand.nextInt(numPlayers);
         System.out.println("Dealer ID = " + dealerId);
         return dealerId;
 
@@ -48,4 +48,27 @@ public class STGame {
     public STPlayer getHumanPlayer(){
         return players[humanPlayerID];
     }
+
+    public void playTheGame() {
+        //game logic
+        boolean gameIsOn = true;
+        while (gameIsOn){
+            int idxPlayer = dealerId + 1;
+            for (int  i = idxPlayer + 1; i < players.length; i++){
+                int currentPlayer = i;
+                if (i == 0){
+                    players[i] = new STPlayer("Player ID =" + i);
+                }
+
+
+            }
+            //todo: setup players in correct order
+
+
+//            showTurnPlayer();
+//            showHumanCards();
+
+        }
+    }
+
 }
