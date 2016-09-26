@@ -5,7 +5,7 @@ import java.util.ArrayList;
  */
 public class STPlayer {
 
-    private ArrayList<STCard> cards;
+    public ArrayList<STCard> cards;
     private String playerId;
 
     public STPlayer(String playerId){
@@ -18,7 +18,8 @@ public class STPlayer {
     }
     @Override
     public String toString(){
-        return "Player ID=" + playerId + "\n cards =" + cards;
+        return "Player ID=" + playerId;
     }
+
 
 }

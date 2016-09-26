@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Created by Angelo Minchio on 02-Sep-16.
@@ -12,6 +13,7 @@ public class STGame {
     public STPlayer[] players;
     private STDeck deck;
     private int humanPlayerID;
+    private static STCard currentCard;
 
     public STGame(int numPlayers) {
         this.numPlayers = numPlayers;
@@ -51,37 +53,64 @@ public class STGame {
     public void playTheGame() {
         //game logic
         boolean gameIsOn = true;
+        int currentPlayer = dealerId + 1;
         while (gameIsOn) {
-
-
-            int currentPlayer = dealerId + 1;
-            for (int i = currentPlayer; i <= players.length; i++) {
-                if (dealerId == (players.length - 1)) {
-                    System.out.println(new STPlayer(getHumanPlayer().toString()));
-                    //humanplayer takes turn
-                    System.out.println(humanPlayerTakeTurn());
-                    i = 1;
-                } else {
-                    System.out.println(aiTakeTurn());
-                }
-
+            if (currentPlayer > players.length){
+                currentPlayer = 0;
             }
-            break;
-        }
+
+            if (currentPlayer == 0) {
+                System.out.println(players[0]);
+                printCards(players[0]);
+                //humanplayer takes turn
+                humanPlayerTakeTurn();
+
+
+            } else {
+                System.out.println(aiTakeTurn());
+            }
+            currentPlayer += 1;
+
+
+
+        }}
         //todo: setup players in correct order
 
-
+    private void endTurn(){
+        playTheGame();
+    }
 //            showTurnPlayer();
 //            showHumanCards();
 
-    }
 
-    private int aiTakeTurn() {
-        return 1;
+
+    private String aiTakeTurn() {
+        String playTurn = "AI taking turn";
+        return playTurn;
     }
 
     private int humanPlayerTakeTurn() {
-        return 0;
+        System.out.println("Human select a Card to play");
+        Scanner userInput = new Scanner(System.in);
+        int choice = userInput.nextInt();
+        currentCard = players[0].cards.remove(choice -1);
+        System.out.println(currentCard);
+        //// TODO: 26/09/2016 Make method to error check input range and if the card selected can be played
+
+
+
+        return choice;
+    }
+    private static void printCards(STPlayer player){
+        int cardNumber = 1;
+        for (STCard card: player.cards){
+            System.out.println("\nCard: " + cardNumber);
+            System.out.println(card);
+            cardNumber += 1;
+        }
+    }
+    public static void canTheCardBePlayed(){
+        
     }
 }
 
