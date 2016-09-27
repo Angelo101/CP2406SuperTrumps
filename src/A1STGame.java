@@ -84,7 +84,7 @@ public class A1STGame {
 
 
     public static int getNumPlayers() {
-        System.out.println("Please choose 2, 4 or 4 players");
+        System.out.println("Please choose 2, 3 or 4 AI's");
         Scanner userInput = new Scanner(System.in);
         int choice = userInput.nextInt();
         while (choice != 2 && choice != 3 && choice != 4){
@@ -116,4 +116,5 @@ public class A1STGame {
     private static void showWelcome() {
         System.out.println("Hello user, and welcome to Super Trumps Card Game!");
     }
+
 }

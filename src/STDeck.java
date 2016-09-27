@@ -5,7 +5,6 @@ import java.util.Random;
  * Created by Angelo on 8/09/2016.
  */
 public class STDeck {
-    private static final int NUM_CARDS_INIT = 60;
     private ArrayList<STCard> cards;
 
     public STDeck(){

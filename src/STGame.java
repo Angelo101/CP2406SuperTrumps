@@ -64,14 +64,11 @@ public class STGame {
                 printCards(players[0]);
                 //humanplayer takes turn
                 humanPlayerTakeTurn();
-
-
+                
             } else {
                 System.out.println(aiTakeTurn());
             }
             currentPlayer += 1;
-
-
 
         }}
         //todo: setup players in correct order
@@ -79,39 +76,52 @@ public class STGame {
     private void endTurn(){
         playTheGame();
     }
-//            showTurnPlayer();
-//            showHumanCards();
-
-
 
     private String aiTakeTurn() {
         String playTurn = "AI taking turn";
         return playTurn;
     }
 
-    private int humanPlayerTakeTurn() {
-        System.out.println("Human select a Card to play");
+
+    public int humanPlayerTakeTurn() {
+
+        int choice;
         Scanner userInput = new Scanner(System.in);
-        int choice = userInput.nextInt();
-        currentCard = players[0].cards.remove(choice -1);
+        System.out.println("Human select a Card to play");
         System.out.println(currentCard);
+        choice = userInput.nextInt() -1;
+        while (players[0].cards.size() < choice || choice < 0){
+            System.out.println("Out of range");
+            System.out.println("Human select a Card to play");
+            choice = userInput.nextInt() -1;
+        }
+        currentCard = players[0].cards.remove(choice);//removes users card they just played
+
+        if (players[0].cards.size() == 0){// if player has 0 cards, the game is finished and the player wins
+            System.out.println(finishGame());
+        }
+
         //// TODO: 26/09/2016 Make method to error check input range and if the card selected can be played
-
-
 
         return choice;
     }
-    private static void printCards(STPlayer player){
+    protected static void printCards(STPlayer player){
         int cardNumber = 1;
         for (STCard card: player.cards){
-            System.out.println("\nCard: " + cardNumber);
+            System.out.println("\nCard: " + cardNumber);// giving the dealt cards a number so I can remove them and use them more easily
             System.out.println(card);
             cardNumber += 1;
         }
+
     }
-    public static void canTheCardBePlayed(){
-        
+
+    public String finishGame(){
+        System.out.println("You Won!");
+        System.exit(1);
+        return "You Just WON!";
     }
+
+
 }
 
 
