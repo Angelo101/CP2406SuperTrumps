@@ -7,7 +7,7 @@ import java.util.Random;
 public class STDeck {
     private ArrayList<STCard> cards;
 
-    public STDeck(){
+    public STDeck() {
         cards = new ArrayList<STCard>();
         ArrayList<String> cardOccurrence = new ArrayList<String>();
 
@@ -296,7 +296,7 @@ public class STDeck {
 
     public ArrayList<STCard> dealCards(int numCardsDealt) {
         ArrayList<STCard> ret = new ArrayList<STCard>();
-        for(int i = 0; i < numCardsDealt; i++){
+        for (int i = 0; i < numCardsDealt; i++) {
             int idx = new Random().nextInt(cards.size());
             STCard card = cards.remove(idx);
             ret.add(card);
