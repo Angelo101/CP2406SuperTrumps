@@ -33,8 +33,10 @@ public class A1STGame {
     public static void playTheGame() {
         //game logic
         boolean gameIsOn = true;
+
         int currentPlayer = game.dealerId + 1;
-        game.cardInPlay = game.players[0].cards.get(0);
+        System.out.println(game.cardInPlay = game.players[0].cards.get(0));
+//        System.out.println(game.categoryInPlay = "Hardness");
         while (gameIsOn) {
             if (currentPlayer >= game.players.length) {
                 currentPlayer = 0;

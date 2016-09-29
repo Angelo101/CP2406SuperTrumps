@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,6 +17,8 @@ public class STGame {
     private int humanPlayerID;
     private static STCard currentCard;
     public STCard cardInPlay;
+    public String categoryChoice;
+
 
 //    public STGame(int numPlayers) {
 //        this.numPlayers = numPlayers;
@@ -86,10 +89,29 @@ public class STGame {
 
 
     public int humanPlayerTakeTurn() {
-
+//        String categoryChoice;
         int choice;
+
+        if (categoryInPlay == null) {
+            Scanner cardCat = new Scanner(System.in);
+            System.out.println("Enter Card Category");
+
+            categoryChoice = cardCat.nextLine();
+            boolean choiceError = true;
+            while (choiceError) {
+
+                choiceError = checkCardCategory(categoryChoice);
+                if (choiceError) {
+                    System.out.println("Enter Card Category 2");
+                    categoryChoice = cardCat.nextLine();
+                }
+            }
+            categoryInPlay = categoryChoice;
+        }
+
         Scanner userInput = new Scanner(System.in);
         System.out.println("Human select a Card to play");
+
         if (currentCard != null) {
             System.out.println(currentCard);
             System.out.println("Human Select a card to play");
@@ -97,13 +119,17 @@ public class STGame {
         choice = userInput.nextInt() - 1;
         boolean errorInCard = true;
         while (errorInCard) {
+
+            currentCard = cardInPlay;
             errorInCard = checkIfCardIsFucked(choice);
+
             if (errorInCard) {
                 System.out.println("Error in card");
                 System.out.println("Human select a Card to play");
                 choice = userInput.nextInt() - 1;
             }
         }
+
         currentCard = players[0].cards.remove(choice);//removes users card they just played
 
         if (players[0].cards.size() == 0) {// if player has 0 cards, the game is finished and the player wins
@@ -133,6 +159,15 @@ public class STGame {
         return "You Just WON!";
     }
 
+    public boolean checkCardCategory(String categoryChoice) {
+        if (categoryChoice.equals("Hardness") || (categoryChoice.equals("Specific Gravity") ||
+                (categoryChoice.equals("Cleavage") || (categoryChoice.equals("Crustal abundance") || (categoryChoice.equals("Economic value")))))) {
+            return false;
+        }
+        System.out.println("Category error");
+        return true;
+    }
+
     // compare cards
     public boolean checkIfCardIsFucked(int choice) {
         //get cardInPlay
@@ -144,9 +179,13 @@ public class STGame {
         //else{
         //print"Card accepted"
         //continue playing
-        if (players[0].cards.size() < choice || choice < 0) {
+//        cardInPlay = currentCard;
+        currentCard = cardInPlay;
+
+        if (players[0].cards.size() <= choice || choice < 0) {
             return true;
         }
+
         if (currentCard.getCategory(categoryInPlay) < cardInPlay.getCategory(categoryInPlay)) {
             return true;
         }
