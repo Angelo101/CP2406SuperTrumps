@@ -48,6 +48,9 @@ public class A1STGame {
                 currentPlayer = 0;
             }
 
+
+
+
             if (currentPlayer == 0) {
 
                 System.out.println(game.players[0]);

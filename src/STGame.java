@@ -39,6 +39,7 @@ public class STGame {
         }
 
         for (STPlayer player : players) {
+
             ArrayList<STCard> cards = deck.dealCards(NUM_CARDS_TO_DEAL);
             player.setCards(cards);
 
@@ -88,7 +89,10 @@ public class STGame {
                     STCard selectedCard = aiPlayer.cards.remove(aiChoice);
                     System.out.println("AI's Choice is: " + selectedCard);
                     cardInPlay = selectedCard;
-                    break;
+                    if(aiChoice == 8){
+                        skipTurn();
+                    }
+//                    break;
                 }
             }
         }
@@ -98,8 +102,6 @@ public class STGame {
 
     public int humanPlayerTakeTurn() {
         int choice = 0;
-
-
 
         if (categoryInPlay == null) {
             Scanner cardCat = new Scanner(System.in);
@@ -176,6 +178,11 @@ public class STGame {
 
     // compare cards
     public boolean checkIfCardIsFucked(int choice) {
+
+        if(choice == 100){
+            skipTurn();
+        }
+
         if (players[0].cards.size() <= choice || choice < 0) {
             System.out.println("Cannot play this card, the card number is out of range");
             return true;
@@ -199,7 +206,12 @@ public class STGame {
 
         return aiChoiceCat;
     }
+    public void skipTurn(){
+        System.out.println("Skipping Turn");
+        A1STGame.currentPlayer +=1;
 
+
+    }
 
 }
 
