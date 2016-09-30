@@ -15,7 +15,6 @@ public class STGame {
     public STPlayer[] players;
     private STDeck deck = new STDeck();
     private int humanPlayerID;
-    private static STCard currentCard;
     public STCard cardInPlay;
     public String categoryChoice;
 
@@ -62,33 +61,37 @@ public class STGame {
 //        playTheGame();
 //    }
 
-    public int aiTakeTurn() {
+    public void aiTakeTurn() {
         int aiChoice;
+        STPlayer aiPlayer = players[A1STGame.currentPlayer];
         if (categoryInPlay == null) {
           categoryInPlay =  aiChoosesCategory();
-
-
         }
-
+        if (cardInPlay == null){
+            Random rand = new Random();
+            cardInPlay = aiPlayer.cards.remove(rand.nextInt(aiPlayer.cards.size() - 1));
+        }
         System.out.println("AI selecting a Card to play");
-
-
         if (cardInPlay != null) {
             System.out.println(cardInPlay);
             System.out.println(" AI Selecting a card to play");
         }
-        Random rand = new Random();
-        STPlayer aiPlayer = players[A1STGame.currentPlayer];
         if (aiPlayer.cards.size() == 0) {
             System.out.println("AI WON");
             System.out.println(finishGame());
-        }
-        aiChoice = rand.nextInt(aiPlayer.cards.size());
-        STCard selectedCard = aiPlayer.cards.remove(aiChoice);
-        System.out.println("AI's Choice is: " + selectedCard);
-        cardInPlay = selectedCard;
+        }else {
+            for(int i = 0; i < aiPlayer.cards.size(); i++){
+                aiChoice = i;
+                if (aiPlayer.cards.get(aiChoice).getCategory(categoryInPlay) <= cardInPlay.getCategory(categoryInPlay)){
 
-        return aiChoice;
+                }else {
+                    STCard selectedCard = aiPlayer.cards.remove(aiChoice);
+                    System.out.println("AI's Choice is: " + selectedCard);
+                    cardInPlay = selectedCard;
+                    break;
+                }
+            }
+        }
     }
 
 
@@ -119,35 +122,21 @@ public class STGame {
         Scanner userInput = new Scanner(System.in);
 //        System.out.println("Human select a Card to play \n");
 
-        if (currentCard != null) {
-            System.out.println(currentCard + "\n");
+        if (cardInPlay != null) {
+            System.out.println(cardInPlay + "\n");
             System.out.println("Human Select a card to play\n");
-
             choice = userInput.nextInt() - 1;
             boolean errorInCard = true;
             while (errorInCard) {
-
-                currentCard = cardInPlay;
                 errorInCard = checkIfCardIsFucked(choice);
-
                 if (errorInCard) {
                     System.out.println("Error in card");
                     System.out.println("Human select a Card to play");
                     choice = userInput.nextInt() - 1;
                 }
             }
-//        while (choice != categoryInPlay){
-//
-//        }
-            // while choice != categoryInPlay
-            // print Wrong category, please choose a card in the current category
-            //get choice
-
         }
-        currentCard = players[0].cards.remove(choice);//removes users card they just played
-        cardInPlay = currentCard;
-
-//            System.out.println("ASHDGFHASDHFAHSDFHSAHDFHASDHFAHSDFHASDHFHSADHFHSADF" + currentCard);
+        cardInPlay = players[0].cards.remove(choice);//removes users card they just played
 
         if (players[0].cards.size() == 0) {// if player has 0 cards, the game is finished and the player wins
             System.out.println(finishGame());
@@ -187,35 +176,16 @@ public class STGame {
 
     // compare cards
     public boolean checkIfCardIsFucked(int choice) {
-        //get cardInPlay
-        //get currentCard
-
-        //while
-        // (if currentCard < cardInPlay)
-        // print"Card Cannot be played"
-        //else{
-        //print"Card accepted"
-        //continue playing
-//        cardInPlay = currentCard;
-        currentCard = cardInPlay;
-
         if (players[0].cards.size() <= choice || choice < 0) {
+            System.out.println("Cannot play this card, the card number is out of range");
             return true;
         }
-//        System.out.println(currentCard);
-        if (currentCard.getCategory(categoryInPlay) < cardInPlay.getCategory(categoryInPlay)) {
+        if (players[0].cards.get(choice).getCategory(categoryInPlay) <= cardInPlay.getCategory(categoryInPlay)){
+            System.out.println("Cannot play this card, the card category value is too low");
             return true;
         }
         return false;
     }
-//    public static void getCurrentCard(STCard cardInPlay){
-//        cardInPlay = currentCard;
-//
-//
-//
-//    }
-
-    //
     public void setNumPlayers(int numberOfPlayers) {
         this.numPlayers = numberOfPlayers;
     }
