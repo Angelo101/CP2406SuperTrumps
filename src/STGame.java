@@ -64,12 +64,9 @@ public class STGame {
 
     public int aiTakeTurn() {
         int aiChoice;
-        categoryChoice = categoryInPlay;
-
-        categoryInPlay = aiChoosesCategory();
         if (categoryInPlay == null) {
-            aiChoosesCategory();
-            categoryInPlay = aiChoosesCategory();
+          categoryInPlay =  aiChoosesCategory();
+
 
         }
 
@@ -97,8 +94,8 @@ public class STGame {
 
 
     public int humanPlayerTakeTurn() {
-//        String categoryChoice;
         int choice = 0;
+
 
 
         if (categoryInPlay == null) {
@@ -229,6 +226,7 @@ public class STGame {
         System.out.println("AI is choosing a category:");
         aiChoiceCat = (aiCategoryChoice[new Random().nextInt(aiCategoryChoice.length)]);
         System.out.println(aiChoiceCat);
+
         return aiChoiceCat;
     }
 
