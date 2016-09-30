@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class A1STGame {
     //    private static final Object NEW_GAME = 1;
     private static STGame game = new STGame();
+    public static int currentPlayer = game.dealerId +1;
 
     public static void main(String[] args) {
         showWelcome();
@@ -33,16 +34,22 @@ public class A1STGame {
     public static void playTheGame() {
         //game logic
         boolean gameIsOn = true;
+//        gamecurrentCard = cardInPlay;
 
         int currentPlayer = game.dealerId + 1;
-        System.out.println(game.cardInPlay = game.players[0].cards.get(0));
+        System.out.println(game.cardInPlay);
+//        System.out.println(game.cardInPlay = game.players[0].cards.get(0)); //remove once AI can play a card
 //        System.out.println(game.categoryInPlay = "Hardness");
+
         while (gameIsOn) {
+            System.out.println("Current Category is: " + game.categoryInPlay);
+            System.out.println("Current Card in play is: " + game.cardInPlay);
             if (currentPlayer >= game.players.length) {
                 currentPlayer = 0;
             }
 
             if (currentPlayer == 0) {
+
                 System.out.println(game.players[0]);
                 game.printCards(game.players[0]);
                 //humanplayer takes turn
@@ -50,9 +57,11 @@ public class A1STGame {
 //                game.compareCards();
 
             } else {
-                System.out.println(game.aiTakeTurn());
+//                System.out.println(game.aiTakeTurn());
+                game.aiTakeTurn();
             }
             currentPlayer += 1;
+
 
         }
     }
