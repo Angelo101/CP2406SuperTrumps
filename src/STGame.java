@@ -31,6 +31,9 @@ public class STGame {
         return dealerId;
 
     }
+//    public void trumpCard(){
+//        STCard
+//    }
 
     public void dealRandomCards() {
         players = new STPlayer[numPlayers];
@@ -72,28 +75,30 @@ public class STGame {
             Random rand = new Random();
             cardInPlay = aiPlayer.cards.remove(rand.nextInt(aiPlayer.cards.size() - 1));
         }
-        System.out.println("AI selecting a Card to play");
-        if (cardInPlay != null) {
-            System.out.println(cardInPlay);
-            System.out.println(" AI Selecting a card to play");
-        }
+//        System.out.println("AI selecting a Card to play");
+//        if (cardInPlay != null) {
+////            System.out.println(cardInPlay);
+//            System.out.println(" AI Selecting a card to play");
+//        }
         if (aiPlayer.cards.size() == 0) {
             System.out.println("AI WON");
             System.out.println(finishGame());
-        }else {
+        }
+        else {
             for(int i = 0; i < aiPlayer.cards.size(); i++){
                 aiChoice = i;
-                if (aiPlayer.cards.get(aiChoice).getCategory(categoryInPlay) <= cardInPlay.getCategory(categoryInPlay)){
+
+                if (aiPlayer.cards.get(aiChoice).getCategory(categoryInPlay) < cardInPlay.getCategory(categoryInPlay)){
+
+                    System.out.println("AI Checking cards to play ");
 
                 }else {
                     STCard selectedCard = aiPlayer.cards.remove(aiChoice);
+                    System.out.println("AI selecting a card to play\n");
                     System.out.println("AI's Choice is: " + selectedCard);
                     cardInPlay = selectedCard;
-                    if(aiChoice == 8){
-                        skipTurn();
-                    }
-//                    break;
                 }
+
             }
         }
     }
@@ -102,7 +107,6 @@ public class STGame {
 
     public int humanPlayerTakeTurn() {
         int choice = 0;
-
         if (categoryInPlay == null) {
             Scanner cardCat = new Scanner(System.in);
             System.out.println("Enter Card Category");
@@ -125,7 +129,7 @@ public class STGame {
 //        System.out.println("Human select a Card to play \n");
 
         if (cardInPlay != null) {
-            System.out.println(cardInPlay + "\n");
+//            System.out.println(cardInPlay + "\n");
             System.out.println("Human Select a card to play\n");
             choice = userInput.nextInt() - 1;
             boolean errorInCard = true;
@@ -138,6 +142,8 @@ public class STGame {
                 }
             }
         }
+
+
         cardInPlay = players[0].cards.remove(choice);//removes users card they just played
 
         if (players[0].cards.size() == 0) {// if player has 0 cards, the game is finished and the player wins
@@ -179,15 +185,19 @@ public class STGame {
     // compare cards
     public boolean checkIfCardIsFucked(int choice) {
 
-        if(choice == 100){
-            skipTurn();
-        }
+//        if(choice == 100){// enter 101 to skip turn
+//            skipTurn();
+//
+//        }
 
         if (players[0].cards.size() <= choice || choice < 0) {
             System.out.println("Cannot play this card, the card number is out of range");
             return true;
         }
-        if (players[0].cards.get(choice).getCategory(categoryInPlay) <= cardInPlay.getCategory(categoryInPlay)){
+//        if (players[0].cards.get(choice)){
+//
+//        }
+        if (players[0].cards.get(choice).getCategory(categoryInPlay) < cardInPlay.getCategory(categoryInPlay)){
             System.out.println("Cannot play this card, the card category value is too low");
             return true;
         }
@@ -208,7 +218,8 @@ public class STGame {
     }
     public void skipTurn(){
         System.out.println("Skipping Turn");
-        A1STGame.currentPlayer +=1;
+        A1STGame.currentPlayer ++;
+
 
 
     }
