@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class A1STGame {
     //    private static final Object NEW_GAME = 1;
     private static STGame game = new STGame();
-    public static int currentPlayer = game.dealerId +1;
+    public static int currentPlayer = game.dealerId + 1;
 
     public static void main(String[] args) {
         showWelcome();
@@ -41,8 +41,9 @@ public class A1STGame {
 //        System.out.println(game.categoryInPlay = "Hardness");
 
         while (gameIsOn) {
+            System.out.println();
 
-            if (currentPlayer > game.players.length) {
+            if (currentPlayer > game.players.length -1) {
                 currentPlayer = 0;
             }
 
@@ -102,6 +103,7 @@ public class A1STGame {
 
     private static STGame startNewGame() {
         int numPlayers = getNumPlayers();
+        System.out.println(numPlayers + "asdfnasdjkfasdjfbasjdkbfkjsadfbasdbfjkasdbfjkasdbfajskdbfkjasdbfkjasdbfjasd");
         game.setNumPlayers(numPlayers);
         game.selectDealer();
         game.dealRandomCards();

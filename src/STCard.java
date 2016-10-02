@@ -129,4 +129,55 @@ public class STCard {
 
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getChemistry() {
+        return chemistry;
+    }
+
+    public String getClassification() {
+        return classification;
+    }
+
+    public String getCrystalSystem() {
+        return crystalSystem;
+    }
+
+    public String getCleavage() {
+        return cleavage;
+    }
+
+    public String getCrustalAbundance() {
+        return crustalAbundance;
+    }
+
+    public String getEconomicValue() {
+        return economicValue;
+    }
+
+    public String getOccurString() {
+        return occurString;
+    }
+
+    public ArrayList<String> getOccurrence() {
+        return occurrence;
+    }
+
+    public double getHardness() {
+        return hardness;
+    }
+
+    public double getSpecificGravity() {
+        return specificGravity;
+    }
 }

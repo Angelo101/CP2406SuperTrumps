@@ -69,44 +69,41 @@ public class STGame {
         int aiChoice;
         STPlayer aiPlayer = players[A1STGame.currentPlayer];
         if (categoryInPlay == null) {
-          categoryInPlay =  aiChoosesCategory();
+            categoryInPlay = aiChoosesCategory();
         }
-        if (cardInPlay == null){
+        if (cardInPlay == null) {
             Random rand = new Random();
             cardInPlay = aiPlayer.cards.remove(rand.nextInt(aiPlayer.cards.size() - 1));
         }
-//        System.out.println("AI selecting a Card to play");
-//        if (cardInPlay != null) {
-////            System.out.println(cardInPlay);
-//            System.out.println(" AI Selecting a card to play");
-//        }
         if (aiPlayer.cards.size() == 0) {
             System.out.println("AI WON");
             System.out.println(finishGame());
-        }
-        else {
-            for(int i = 0; i < aiPlayer.cards.size(); i++){
+        } else {
+            for (int i = 0; i < aiPlayer.cards.size(); i++) {
                 aiChoice = i;
 
-                if (aiPlayer.cards.get(aiChoice).getCategory(categoryInPlay) < cardInPlay.getCategory(categoryInPlay)){
+                if (aiPlayer.cards.get(aiChoice).getCategory(categoryInPlay) < cardInPlay.getCategory(categoryInPlay)) {
 
                     System.out.println("AI Checking cards to play ");
 
-                }else {
+                } else {
                     STCard selectedCard = aiPlayer.cards.remove(aiChoice);
                     System.out.println("AI selecting a card to play\n");
                     System.out.println("AI's Choice is: " + selectedCard);
                     cardInPlay = selectedCard;
+                    break;
                 }
 
             }
         }
     }
 
-
-
     public int humanPlayerTakeTurn() {
         int choice = 0;
+        if (isTrumpCard(choice)){
+            cardInPlay = players[0].cards.remove(choice);//removes users card they just played
+            // set the category from cardinplay
+        }
         if (categoryInPlay == null) {
             Scanner cardCat = new Scanner(System.in);
             System.out.println("Enter Card Category");
@@ -127,6 +124,14 @@ public class STGame {
 
         Scanner userInput = new Scanner(System.in);
 //        System.out.println("Human select a Card to play \n");
+        if (cardInPlay == null) {
+            System.out.println("Human Select a card to play\n");
+            choice = userInput.nextInt() - 1;
+
+
+            //error check userinput is in range again
+
+        }
 
         if (cardInPlay != null) {
 //            System.out.println(cardInPlay + "\n");
@@ -141,6 +146,7 @@ public class STGame {
                     choice = userInput.nextInt() - 1;
                 }
             }
+
         }
 
 
@@ -194,15 +200,24 @@ public class STGame {
             System.out.println("Cannot play this card, the card number is out of range");
             return true;
         }
-//        if (players[0].cards.get(choice)){
+
 //
-//        }
-        if (players[0].cards.get(choice).getCategory(categoryInPlay) < cardInPlay.getCategory(categoryInPlay)){
+        if (players[0].cards.get(choice).getCategory(categoryInPlay) < cardInPlay.getCategory(categoryInPlay)) {
             System.out.println("Cannot play this card, the card category value is too low");
             return true;
         }
         return false;
     }
+    public boolean isTrumpCard(int choice){
+        STCard card = players[0].cards.get(choice);
+//        cardInPlay = card;
+        return card.getCardType().equals("trump");
+
+    }
+    public void setTrumpCard(STCard card){
+//        card.getCategory()
+    }
+
     public void setNumPlayers(int numberOfPlayers) {
         this.numPlayers = numberOfPlayers;
     }
@@ -216,10 +231,10 @@ public class STGame {
 
         return aiChoiceCat;
     }
-    public void skipTurn(){
-        System.out.println("Skipping Turn");
-        A1STGame.currentPlayer ++;
 
+    public void skipTurn() {
+        System.out.println("Skipping Turn");
+        A1STGame.currentPlayer++;
 
 
     }
