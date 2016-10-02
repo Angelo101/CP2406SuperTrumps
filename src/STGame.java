@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,7 +6,6 @@ import java.util.Scanner;
  * Created by Angelo Minchio on 02-Sep-16.
  */
 public class STGame {
-
     private static final int NUM_CARDS_TO_DEAL = 8;
     public String categoryInPlay;
     private int numPlayers;
@@ -18,11 +16,6 @@ public class STGame {
     public STCard cardInPlay;
     public String categoryChoice;
 
-
-//    public STGame(int numPlayers) {
-//        this.numPlayers = numPlayers;
-//        deck = new STDeck();
-//    }
 
     public int selectDealer() {
         Random rand = new Random();
@@ -40,14 +33,10 @@ public class STGame {
         for (int i = 0; i < numPlayers; i++) {
             players[i] = new STPlayer("Player ID =" + i);
         }
-
         for (STPlayer player : players) {
-
             ArrayList<STCard> cards = deck.dealCards(NUM_CARDS_TO_DEAL);
             player.setCards(cards);
-
         }
-
     }
 
     public void setHumanPlayer() {
@@ -57,10 +46,6 @@ public class STGame {
     public STPlayer getHumanPlayer() {
         return players[humanPlayerID];
     }
-
-
-    //todo: setup players in correct order
-
 //    private void endTurn(){
 //        playTheGame();
 //    }
@@ -68,6 +53,8 @@ public class STGame {
     public void aiTakeTurn() {
         int aiChoice;
         STPlayer aiPlayer = players[A1STGame.currentPlayer];
+        int aiCount = aiPlayer.cards.size();
+
         if (categoryInPlay == null) {
             categoryInPlay = aiChoosesCategory();
         }
@@ -81,11 +68,19 @@ public class STGame {
         } else {
             for (int i = 0; i < aiPlayer.cards.size(); i++) {
                 aiChoice = i;
-
                 if (aiPlayer.cards.get(aiChoice).getCategory(categoryInPlay) < cardInPlay.getCategory(categoryInPlay)) {
-
+//                    if(isTrumpCard(aiChoice)){
+//                        cardInPlay = aiPlayer.cards.remove(aiChoice);
+//                    }
                     System.out.println("AI Checking cards to play ");
-
+                    aiCount --;
+                    if(aiCount == 0){// if it hits this, it moves onto the next player
+                        System.out.println("AI Cannot play a card!");
+                        STCard extraCard = deck.dealCards(1).get(0);
+                        aiPlayer.cards.add(extraCard);// adding a card from the top of the deck to AI's hand
+                        break; // After a card is added to AI's Hand it try's to play it, putting a break
+                        // here doesn't allow it to try play it
+                    }
                 } else {
                     STCard selectedCard = aiPlayer.cards.remove(aiChoice);
                     System.out.println("AI selecting a card to play\n");
@@ -93,25 +88,18 @@ public class STGame {
                     cardInPlay = selectedCard;
                     break;
                 }
-
             }
         }
     }
 
     public int humanPlayerTakeTurn() {
         int choice = 0;
-        if (isTrumpCard(choice)){
-            cardInPlay = players[0].cards.remove(choice);//removes users card they just played
-            // set the category from cardinplay
-        }
         if (categoryInPlay == null) {
             Scanner cardCat = new Scanner(System.in);
             System.out.println("Enter Card Category");
-
             categoryChoice = cardCat.nextLine();
             boolean choiceError = true;
             while (choiceError) {
-
                 choiceError = checkCardCategory(categoryChoice);
                 if (choiceError) {
                     System.out.println("Enter Card Category 2");
@@ -120,20 +108,33 @@ public class STGame {
             }
             categoryInPlay = categoryChoice;
         }
-
-
         Scanner userInput = new Scanner(System.in);
 //        System.out.println("Human select a Card to play \n");
         if (cardInPlay == null) {
             System.out.println("Human Select a card to play\n");
             choice = userInput.nextInt() - 1;
-
-
             //error check userinput is in range again
-
         }
-
         if (cardInPlay != null) {
+            if(isTrumpCard(choice)){
+
+                if(cardInPlay.getTitle().equals("The Miner")){
+                    categoryInPlay = "Economic value";
+                }
+                if (cardInPlay.getTitle().equals("The Petrologist")) {
+                    categoryInPlay = "Crustal abundance";
+                }
+                if (cardInPlay.getTitle().equals("The Mineralogist")){
+                    categoryInPlay = "Cleavage";
+                }
+                if (cardInPlay.getTitle().equals("The Geophysicist")){
+                    categoryInPlay = "Specific Gravity";
+                }
+                else {
+                    categoryInPlay = categoryChoice;
+                }
+
+            }
 //            System.out.println(cardInPlay + "\n");
             System.out.println("Human Select a card to play\n");
             choice = userInput.nextInt() - 1;
@@ -146,18 +147,12 @@ public class STGame {
                     choice = userInput.nextInt() - 1;
                 }
             }
-
         }
-
-
         cardInPlay = players[0].cards.remove(choice);//removes users card they just played
-
+        
         if (players[0].cards.size() == 0) {// if player has 0 cards, the game is finished and the player wins
             System.out.println(finishGame());
         }
-
-        //// TODO: 26/09/2016 Make method to error check input range and if the card selected can be played
-
         return choice;
     }
 
@@ -168,14 +163,11 @@ public class STGame {
             System.out.println(card);
             cardNumber += 1;
         }
-
     }
 
     public String finishGame() {
         System.out.println("You Won!");
         System.exit(1);
-
-
         return "You Just WON!";
     }
 
@@ -187,35 +179,32 @@ public class STGame {
         System.out.println("Category error");
         return true;
     }
-
     // compare cards
     public boolean checkIfCardIsFucked(int choice) {
 
-//        if(choice == 100){// enter 101 to skip turn
-//            skipTurn();
-//
-//        }
+        if (choice == 100) {// enter 101 to skip turn
+            skipTurn();
+        }
+        if (isTrumpCard(choice)){
+            return false;
+        }
 
         if (players[0].cards.size() <= choice || choice < 0) {
             System.out.println("Cannot play this card, the card number is out of range");
             return true;
         }
-
-//
-        if (players[0].cards.get(choice).getCategory(categoryInPlay) < cardInPlay.getCategory(categoryInPlay)) {
+        if (players[0].cards.get(choice).getCategory(categoryInPlay) <= cardInPlay.getCategory(categoryInPlay)) {
             System.out.println("Cannot play this card, the card category value is too low");
             return true;
         }
         return false;
     }
-    public boolean isTrumpCard(int choice){
+
+    public boolean isTrumpCard(int choice) {
         STCard card = players[0].cards.get(choice);
+
 //        cardInPlay = card;
         return card.getCardType().equals("trump");
-
-    }
-    public void setTrumpCard(STCard card){
-//        card.getCategory()
     }
 
     public void setNumPlayers(int numberOfPlayers) {
@@ -228,17 +217,17 @@ public class STGame {
         System.out.println("AI is choosing a category:");
         aiChoiceCat = (aiCategoryChoice[new Random().nextInt(aiCategoryChoice.length)]);
         System.out.println(aiChoiceCat);
-
         return aiChoiceCat;
     }
 
     public void skipTurn() {
         System.out.println("Skipping Turn");
-        A1STGame.currentPlayer++;
-
+        addCard();
+        A1STGame.playTheGame();
 
     }
-
+    public void addCard(){
+        STCard extraCard = deck.dealCards(1).get(0);
+        players[0].cards.add(extraCard);
+    }
 }
-
-

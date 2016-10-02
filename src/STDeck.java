@@ -11,7 +11,7 @@ public class STDeck {
         cards = new ArrayList<STCard>();
         ArrayList<String> cardOccurrence = new ArrayList<String>();
 
-        //Play card creation
+        //Creation for cards
         cardOccurrence.add("igneous");
         cardOccurrence.add("metamorphic");
         cardOccurrence.add("sedimentary");
@@ -300,7 +300,6 @@ public class STDeck {
             int idx = new Random().nextInt(cards.size());
             STCard card = cards.remove(idx);
             ret.add(card);
-//            System.out.println("card = " + card); //Debug Testing
         }
         return ret;
     }

@@ -30,10 +30,7 @@ public class STCard {
         occurString = "";
         for (int i = 0; i < occurrence.size(); i++) {
             occurString = occurString + " " + occurrence.get(i);
-//            System.out.println(occurrence.get(i)); //Debug
-//            System.out.println(occurString); //Debug
         }
-//        System.out.println(this.occurrence); //Debug to check occurrence passed correctly
     }
 
     public String toString() {
@@ -93,7 +90,7 @@ public class STCard {
                     return 14.0;
             }
         }
-        if (cardCategory.equals("crustal abundance")) {
+        if (cardCategory.equals("Crustal abundance")) {
             switch (this.crustalAbundance) {
                 case "ultratrace":
                     return 1.0;
@@ -109,7 +106,7 @@ public class STCard {
                     return 6.0;
             }
         }
-        if (cardCategory.equals("economic value")) {
+        if (cardCategory.equals("Economic value")) {
             switch (this.economicValue) {
                 case "trivial":
                     return 1.0;
@@ -126,7 +123,6 @@ public class STCard {
             }
         }
         return -1;
-
     }
 
     public String getFileName() {

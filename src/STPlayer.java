@@ -14,13 +14,9 @@ public class STPlayer {
 
     public void setCards(ArrayList<STCard> cards) {
         this.cards = cards;
-
     }
-
     @Override
     public String toString() {
         return playerId;
     }
-
-
 }

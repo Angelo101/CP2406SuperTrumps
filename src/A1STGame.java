@@ -4,18 +4,15 @@ import java.util.Scanner;
  * Created by Angelo Minchio on 02-Sep-16.
  */
 public class A1STGame {
-    //    private static final Object NEW_GAME = 1;
     private static STGame game = new STGame();
     public static int currentPlayer = game.dealerId + 1;
 
     public static void main(String[] args) {
         showWelcome();
         showMenu();
-//       STGame game;
         int option;
         do {
             option = getUserMenuChoice();
-
             switch (option) {
                 case 1:
                     startNewGame();
@@ -25,44 +22,34 @@ public class A1STGame {
                     instructions();
                     showMenu();
                     break;
-
             }
         }
         while (option != 1);
     }
 
     public static void playTheGame() {
+
         //game logic
         boolean gameIsOn = true;
-
         int currentPlayer = game.dealerId + 1;
 //        System.out.println(game.cardInPlay);
 //        System.out.println(game.cardInPlay = game.players[0].cards.get(0)); //remove once AI can play a card
 //        System.out.println(game.categoryInPlay = "Hardness");
-
         while (gameIsOn) {
             System.out.println();
-
             if (currentPlayer > game.players.length -1) {
                 currentPlayer = 0;
             }
-
-
-
-
             if (currentPlayer == 0) {
                 System.out.println(game.players[0]);
                 game.printCards(game.players[0]);
                 System.out.println("\nCurrent Category is: " + game.categoryInPlay);
                 System.out.println("Current Card in play is: " + game.cardInPlay);
                 game.humanPlayerTakeTurn();
-
             } else {
                 game.aiTakeTurn();
             }
             currentPlayer += 1;
-
-
         }
     }
 
@@ -96,10 +83,7 @@ public class A1STGame {
                 "The last player then gets to lead out the next round and chooses the trump category to be played." + '\n' + '\n' +
                 "7. The winner of the game is the first player to lose all of their cards. The game continues until" + '\n' +
                 "all but one player (i.e., the loser) has lost their cards.");
-
-
     }
-
 
     private static STGame startNewGame() {
         int numPlayers = getNumPlayers();
@@ -111,7 +95,6 @@ public class A1STGame {
         STPlayer humanplayer = game.getHumanPlayer();
         showPlayer(humanplayer);
         return game;
-
     }
 
     private static void showPlayer(STPlayer humanplayer) {
@@ -128,21 +111,13 @@ public class A1STGame {
             choice = userInput.nextInt();
         }
         return choice;
-
-
     }
-//    public void setNumPlayers(int numberOfPlayers){
-//        this.setNumPlayers = numberOfPlayers;
-//    }
-
     private static int getUserMenuChoice() {
-
         Scanner userInput = new Scanner(System.in);
         int choice = userInput.nextInt();
         while (choice != 1 && choice != 2) {
             System.out.println("Please choose 1 or 2");
             choice = userInput.nextInt();
-
         }
         return choice;
     }
