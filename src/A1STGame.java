@@ -28,7 +28,6 @@ public class A1STGame {
     }
 
     public static void playTheGame() {
-
         //game logic
         boolean gameIsOn = true;
         int currentPlayer = game.dealerId + 1;

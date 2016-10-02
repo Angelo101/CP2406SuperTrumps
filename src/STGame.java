@@ -22,11 +22,7 @@ public class STGame {
         dealerId = rand.nextInt((numPlayers - 1) + 1);
         System.out.println("Dealer ID = " + dealerId);
         return dealerId;
-
     }
-//    public void trumpCard(){
-//        STCard
-//    }
 
     public void dealRandomCards() {
         players = new STPlayer[numPlayers];
@@ -69,12 +65,9 @@ public class STGame {
             for (int i = 0; i < aiPlayer.cards.size(); i++) {
                 aiChoice = i;
                 if (aiPlayer.cards.get(aiChoice).getCategory(categoryInPlay) < cardInPlay.getCategory(categoryInPlay)) {
-//                    if(isTrumpCard(aiChoice)){
-//                        cardInPlay = aiPlayer.cards.remove(aiChoice);
-//                    }
                     System.out.println("AI Checking cards to play ");
-                    aiCount --;
-                    if(aiCount == 0){// if it hits this, it moves onto the next player
+                    aiCount--;
+                    if (aiCount == 0) {// if it hits this, it moves onto the next player
                         System.out.println("AI Cannot play a card!");
                         STCard extraCard = deck.dealCards(1).get(0);
                         aiPlayer.cards.add(extraCard);// adding a card from the top of the deck to AI's hand
@@ -113,29 +106,24 @@ public class STGame {
         if (cardInPlay == null) {
             System.out.println("Human Select a card to play\n");
             choice = userInput.nextInt() - 1;
-            //error check userinput is in range again
         }
         if (cardInPlay != null) {
-            if(isTrumpCard(choice)){
-
-                if(cardInPlay.getTitle().equals("The Miner")){
+            if (isTrumpCard(choice)) {
+                if (cardInPlay.getTitle().equals("The Miner")) {
                     categoryInPlay = "Economic value";
                 }
                 if (cardInPlay.getTitle().equals("The Petrologist")) {
                     categoryInPlay = "Crustal abundance";
                 }
-                if (cardInPlay.getTitle().equals("The Mineralogist")){
+                if (cardInPlay.getTitle().equals("The Mineralogist")) {
                     categoryInPlay = "Cleavage";
                 }
-                if (cardInPlay.getTitle().equals("The Geophysicist")){
+                if (cardInPlay.getTitle().equals("The Geophysicist")) {
                     categoryInPlay = "Specific Gravity";
-                }
-                else {
+                } else {
                     categoryInPlay = categoryChoice;
                 }
-
             }
-//            System.out.println(cardInPlay + "\n");
             System.out.println("Human Select a card to play\n");
             choice = userInput.nextInt() - 1;
             boolean errorInCard = true;
@@ -149,7 +137,7 @@ public class STGame {
             }
         }
         cardInPlay = players[0].cards.remove(choice);//removes users card they just played
-        
+
         if (players[0].cards.size() == 0) {// if player has 0 cards, the game is finished and the player wins
             System.out.println(finishGame());
         }
@@ -179,16 +167,16 @@ public class STGame {
         System.out.println("Category error");
         return true;
     }
+
     // compare cards
     public boolean checkIfCardIsFucked(int choice) {
 
         if (choice == 100) {// enter 101 to skip turn
             skipTurn();
         }
-        if (isTrumpCard(choice)){
+        if (isTrumpCard(choice)) {
             return false;
         }
-
         if (players[0].cards.size() <= choice || choice < 0) {
             System.out.println("Cannot play this card, the card number is out of range");
             return true;
@@ -202,8 +190,6 @@ public class STGame {
 
     public boolean isTrumpCard(int choice) {
         STCard card = players[0].cards.get(choice);
-
-//        cardInPlay = card;
         return card.getCardType().equals("trump");
     }
 
@@ -224,9 +210,9 @@ public class STGame {
         System.out.println("Skipping Turn");
         addCard();
         A1STGame.playTheGame();
-
     }
-    public void addCard(){
+
+    public void addCard() {
         STCard extraCard = deck.dealCards(1).get(0);
         players[0].cards.add(extraCard);
     }
