@@ -69,7 +69,8 @@ public class STGame {
                     aiCount--;
                     if (aiCount == 0) {// if it hits this, it moves onto the next player
                         System.out.println("AI Cannot play a card!");
-                        STCard extraCard = deck.dealCards(1).get(0);
+                        System.out.println("AI picking up a card");
+                        STCard extraCard = deck.dealCards(1).remove(0);
                         aiPlayer.cards.add(extraCard);// adding a card from the top of the deck to AI's hand
                         break; // After a card is added to AI's Hand it try's to play it, putting a break
                         // here doesn't allow it to try play it
@@ -95,14 +96,13 @@ public class STGame {
             while (choiceError) {
                 choiceError = checkCardCategory(categoryChoice);
                 if (choiceError) {
-                    System.out.println("Enter Card Category 2");
+                    System.out.println("Enter Card Category");
                     categoryChoice = cardCat.nextLine();
                 }
             }
             categoryInPlay = categoryChoice;
         }
         Scanner userInput = new Scanner(System.in);
-//        System.out.println("Human select a Card to play \n");
         if (cardInPlay == null) {
             System.out.println("Human Select a card to play\n");
             choice = userInput.nextInt() - 1;
@@ -128,7 +128,7 @@ public class STGame {
             choice = userInput.nextInt() - 1;
             boolean errorInCard = true;
             while (errorInCard) {
-                errorInCard = checkIfCardIsFucked(choice);
+                errorInCard = checkIfCardCanBePlayed(choice);
                 if (errorInCard) {
                     System.out.println("Error in card");
                     System.out.println("Human select a Card to play");
@@ -154,7 +154,7 @@ public class STGame {
     }
 
     public String finishGame() {
-        System.out.println("You Won!");
+        System.out.println("CONGRATULATIONS you are the first player to play all your cards! You WIN!");
         System.exit(1);
         return "You Just WON!";
     }
@@ -169,17 +169,18 @@ public class STGame {
     }
 
     // compare cards
-    public boolean checkIfCardIsFucked(int choice) {
+    public boolean checkIfCardCanBePlayed(int choice) {
 
         if (choice == 100) {// enter 101 to skip turn
             skipTurn();
-        }
-        if (isTrumpCard(choice)) {
-            return false;
+//            return false;
         }
         if (players[0].cards.size() <= choice || choice < 0) {
             System.out.println("Cannot play this card, the card number is out of range");
             return true;
+        }
+        if (isTrumpCard(choice)) {
+            return false;
         }
         if (players[0].cards.get(choice).getCategory(categoryInPlay) <= cardInPlay.getCategory(categoryInPlay)) {
             System.out.println("Cannot play this card, the card category value is too low");
@@ -213,7 +214,7 @@ public class STGame {
     }
 
     public void addCard() {
-        STCard extraCard = deck.dealCards(1).get(0);
+        STCard extraCard = deck.dealCards(1).remove(0);
         players[0].cards.add(extraCard);
     }
 }

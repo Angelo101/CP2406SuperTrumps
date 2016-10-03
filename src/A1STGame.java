@@ -31,9 +31,8 @@ public class A1STGame {
         //game logic
         boolean gameIsOn = true;
         int currentPlayer = game.dealerId + 1;
-//        System.out.println(game.cardInPlay);
 //        System.out.println(game.cardInPlay = game.players[0].cards.get(0)); //remove once AI can play a card
-//        System.out.println(game.categoryInPlay = "Hardness");
+//        System.out.println(game.categoryInPlay = "Hardness"); testing code
         while (gameIsOn) {
             System.out.println();
             if (currentPlayer > game.players.length -1) {
@@ -86,7 +85,6 @@ public class A1STGame {
 
     private static STGame startNewGame() {
         int numPlayers = getNumPlayers();
-        System.out.println(numPlayers + "asdfnasdjkfasdjfbasjdkbfkjsadfbasdbfjkasdbfjkasdbfajskdbfkjasdbfkjasdbfjasd");
         game.setNumPlayers(numPlayers);
         game.selectDealer();
         game.dealRandomCards();
