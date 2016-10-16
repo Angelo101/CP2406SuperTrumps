@@ -51,8 +51,8 @@ public class A1STGame {
         }
     }
 
-    protected static void instructions() {
-        System.out.println("How to play:" + '\n' + '\n' +
+    protected static String instructions() {
+        String string = ("How to play:" + '\n' + '\n' +
                 "1. A dealer (randomly chosen) shuffles the cards and deals each player 8 cards." + '\n' +
                 "Each player can look at their cards, but should not show them to other players." + '\n' +
                 "The remaining card pack is placed face down on the table." + '\n' + '\n' +
@@ -81,11 +81,12 @@ public class A1STGame {
                 "The last player then gets to lead out the next round and chooses the trump category to be played." + '\n' + '\n' +
                 "7. The winner of the game is the first player to lose all of their cards. The game continues until" + '\n' +
                 "all but one player (i.e., the loser) has lost their cards.");
+        return string;
     }
 
-    private static STGame startNewGame() {
-        int numPlayers = getNumPlayers();
-        game.setNumPlayers(numPlayers);
+    public static STGame startNewGame() {
+//        int numPlayers = getNumPlayers();
+//        game.setNumPlayers(numPlayers);
         game.selectDealer();
         game.dealRandomCards();
         game.setHumanPlayer();

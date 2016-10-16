@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class STGame {
     private static final int NUM_CARDS_TO_DEAL = 8;
     public String categoryInPlay;
-    private int numPlayers;
+    public static int numPlayers;
     public int dealerId;
     public STPlayer[] players;
     private STDeck deck = new STDeck();
@@ -194,8 +194,9 @@ public class STGame {
         return card.getCardType().equals("trump");
     }
 
-    public void setNumPlayers(int numberOfPlayers) {
-        this.numPlayers = numberOfPlayers;
+    public static void setNumPlayers(int numberOfPlayers) {
+        numPlayers = numberOfPlayers;
+        System.out.println("num" + numPlayers);
     }
 
     public String aiChoosesCategory() {
