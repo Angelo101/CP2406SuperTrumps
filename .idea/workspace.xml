@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68029a6e-35b8-4c22-a98e-d58db48fa44d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GameGuiFrame.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GuiMain.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/HumanCardsPanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/STMenuView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CP2406SuperTrumps/A1STGame.class" afterPath="$PROJECT_DIR$/out/production/CP2406SuperTrumps/A1STGame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CP2406SuperTrumps/STGame.class" afterPath="$PROJECT_DIR$/out/production/CP2406SuperTrumps/STGame.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CardTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CP2406SuperTrumps/GameGuiFrame.class" afterPath="$PROJECT_DIR$/out/production/CP2406SuperTrumps/GameGuiFrame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/CP2406SuperTrumps/HumanCardsPanel.class" afterPath="$PROJECT_DIR$/out/production/CP2406SuperTrumps/HumanCardsPanel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/A1STGame.java" afterPath="$PROJECT_DIR$/src/A1STGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/STGame.java" afterPath="$PROJECT_DIR$/src/STGame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameGuiFrame.java" afterPath="$PROJECT_DIR$/src/GameGuiFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HumanCardsPanel.java" afterPath="$PROJECT_DIR$/src/HumanCardsPanel.java" />
     </list>
     <ignored path="CP2406SuperTrumps.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="STMenuView.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="STMenuView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/STMenuView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
+            <state relative-caret-position="253">
+              <caret line="61" column="49" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,8 +86,8 @@
       <file leaf-file-name="GameGuiFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameGuiFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="170">
+              <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,11 +95,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HumanCardsPanel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CardTable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CardTable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HumanCardsPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HumanCardsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="166">
+              <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -142,13 +151,17 @@
         <option value="$PROJECT_DIR$/src/STview.java" />
         <option value="$PROJECT_DIR$/src/GameGui.java" />
         <option value="$PROJECT_DIR$/src/PlayGamePanel.java" />
-        <option value="$PROJECT_DIR$/src/GameGuiFrame.java" />
         <option value="$PROJECT_DIR$/src/STView.java" />
         <option value="$PROJECT_DIR$/src/GuiMain.java" />
         <option value="$PROJECT_DIR$/src/A1STGame.java" />
-        <option value="$PROJECT_DIR$/src/HumanCardsPanel.java" />
         <option value="$PROJECT_DIR$/src/STGame.java" />
         <option value="$PROJECT_DIR$/src/STMenuView.java" />
+        <option value="$PROJECT_DIR$/src/GuiCategoryLabel.java" />
+        <option value="$PROJECT_DIR$/src/HumanCardsPanel.java" />
+        <option value="$PROJECT_DIR$/src/GuiCategory.java" />
+        <option value="$PROJECT_DIR$/src/GuiCurrentCard.java" />
+        <option value="$PROJECT_DIR$/src/CardTable.java" />
+        <option value="$PROJECT_DIR$/src/GameGuiFrame.java" />
       </list>
     </option>
   </component>
@@ -768,12 +781,12 @@
       <workItem from="1476501878052" duration="78000" />
       <workItem from="1476502087429" duration="13797000" />
       <workItem from="1476516867212" duration="2292000" />
-      <workItem from="1476584262545" duration="13045000" />
+      <workItem from="1476584262545" duration="15998000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194340000" />
+    <option name="totallyTimeSpent" value="197293000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -861,37 +874,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/STPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
-          <folding>
-            <element signature="e#149#157#0" expanded="true" />
-            <element signature="e#228#229#0" expanded="true" />
-            <element signature="e#268#269#0" expanded="true" />
-            <element signature="e#321#322#0" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-            <element signature="e#400#401#0" expanded="true" />
-            <element signature="e#431#432#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/A1STGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DeckBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/STDeck.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -1249,45 +1231,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameGuiFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GuiMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-          <folding>
-            <element signature="e#111#112#0" expanded="true" />
-            <element signature="e#143#144#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/STMenuView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/A1STGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="94" column="15" selection-start-line="94" selection-start-column="15" selection-end-line="94" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/STGame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1307,10 +1250,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GuiCategory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="11" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GuiCurrentCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/A1STGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="94" column="15" selection-start-line="94" selection-start-column="15" selection-end-line="94" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/HumanCardsPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="166">
+          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CardTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameGuiFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GuiMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+          <folding>
+            <element signature="e#111#112#0" expanded="true" />
+            <element signature="e#143#144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/STMenuView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="61" column="49" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

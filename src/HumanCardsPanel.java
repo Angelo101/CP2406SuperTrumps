@@ -12,17 +12,17 @@ public class HumanCardsPanel extends JPanel {
         setVisible(true);
         setLayout(new FlowLayout());
         setBackground(Color.BLACK);
-//        int cards = 8;
+        int cards = 8;
 //        int numOfCardsInHand = player.cards.size();
-        for(int i = 0; i < player.cards.size(); i ++){
-            JButton cards = new JButton();
-            add(cards);
-
-        }
-//        for (int i = 0; i < cards; i++){
-//            JButton playerCards = new JButton();
-//            add(playerCards);
+//        for(int i = 0; i < player.cards.size(); i ++){
+//            JButton cards = new JButton();
+//            add(cards);
+//
 //        }
+        for (int i = 0; i < cards; i++){
+            JButton playerCards = new JButton();
+            add(playerCards);
+        }
 //        add(cards);
 //        add(card);
 

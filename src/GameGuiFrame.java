@@ -7,6 +7,7 @@ import java.awt.*;
  */
 public class GameGuiFrame extends JFrame {
     public HumanCardsPanel humanCardsPanel = new HumanCardsPanel();
+    public CardTable cardTable = new CardTable();
 
     public GameGuiFrame() {
         super("SUPER TRUMPS GAME");
@@ -14,8 +15,11 @@ public class GameGuiFrame extends JFrame {
         setVisible(true);
         setSize(1000, 600);
         setLocationRelativeTo(null);
-
+        setResizable(false);
         add(humanCardsPanel, BorderLayout.SOUTH);
+        add(cardTable, BorderLayout.NORTH);
+        add(cardTable, BorderLayout.CENTER);
+
 
     }
 
