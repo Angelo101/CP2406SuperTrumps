@@ -7,9 +7,10 @@ import java.util.ArrayList;
 //TODO: Fix Occurrence not displaying when printed
 
 public class STCard {
-    private String fileName, cardType, title, chemistry, classification, crystalSystem, cleavage, crustalAbundance, economicValue, occurString;
+    private String cardType, title, chemistry, classification, crystalSystem, cleavage, crustalAbundance, economicValue, occurString;
     private ArrayList<String> occurrence = new ArrayList<>();
     private double hardness, specificGravity;
+    public String fileName;
 
     public STCard(String fileName, String cardType, String title,
                   String chemistry, String classification, String crystalSystem,

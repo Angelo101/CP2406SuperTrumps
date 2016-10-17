@@ -5,7 +5,6 @@ import java.awt.*;
  * Created by noobtube on 16/10/2016.
  */
 public class CardTable extends JPanel{
-
     public CardTable(){
         super();
         setVisible(true);
@@ -15,6 +14,7 @@ public class CardTable extends JPanel{
         JLabel currentCardView = new JLabel("Current Card In Play");
         JLabel currentCategory = new JLabel("Current Category");
         JButton pickUpCard = new JButton("PICK UP");
+
         super.add(currentCardView);
         super.add(currentCategory);
         super.add(pickUpCard);

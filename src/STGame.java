@@ -6,13 +6,13 @@ import java.util.Scanner;
  * Created by Angelo Minchio on 02-Sep-16.
  */
 public class STGame {
-    private static final int NUM_CARDS_TO_DEAL = 8;
+    public static final int NUM_CARDS_TO_DEAL = 8;
     public String categoryInPlay;
     public static int numPlayers;
     public int dealerId;
     public STPlayer[] players;
-    private STDeck deck = new STDeck();
-    private int humanPlayerID;
+    public STDeck deck = new STDeck();
+    public int humanPlayerID;
     public STCard cardInPlay;
     public String categoryChoice;
 
