@@ -27,7 +27,6 @@ public class STMenuView {
         panel.setBackground(Color.gray);
         selectPlayers = new JComboBox();
         instructionsButton = new JButton("INSTRUCTIONS");
-        new SelectCategoryGui();
         instructionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -52,8 +51,8 @@ public class STMenuView {
                 game.dealRandomCards();
                 game.setHumanPlayer();
 
-
 //                playTheGame();
+
                 try {
                     GameGuiFrame gameGuiFrame = new GameGuiFrame(game.players);
                 } catch (IOException e1) {

@@ -15,10 +15,13 @@ public class GameGuiFrame extends JFrame {
         humanCardsPanel = new HumanCardsPanel(players[0]);
         setLayout(new BorderLayout());
         setVisible(true);
-        setSize(1500, 600);
-        setLocationRelativeTo(null);
-        setResizable(false);
-        add(humanCardsPanel, BorderLayout.SOUTH);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        JScrollPane playerViewScroll = new JScrollPane(humanCardsPanel,
+                ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+
+        add(playerViewScroll, BorderLayout.SOUTH);
         add(cardTable, BorderLayout.NORTH);
         add(cardTable, BorderLayout.CENTER);
 

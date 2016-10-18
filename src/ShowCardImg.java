@@ -13,6 +13,7 @@ public class ShowCardImg extends JPanel {
     BufferedImage cardImage;
     String workingDirectory = System.getProperty("user.dir");
     JButton cardView;
+    JLabel currentCardView = CardTable.currentCardView;
     public ShowCardImg(STCard card) throws IOException{
         try {
             cardImage = ImageIO.read(new File(workingDirectory + "/res/" + card.fileName));
@@ -20,9 +21,19 @@ public class ShowCardImg extends JPanel {
             e.printStackTrace();
         }
 
-        cardImage = cardResize(cardImage, 100, 150, BufferedImage.TYPE_INT_ARGB);
+        cardImage = cardResize(cardImage, 250, 350, BufferedImage.TYPE_INT_ARGB);
         cardView = new JButton(new ImageIcon(cardImage));
         add(cardView);
+        cardView.addActionListener(e -> {
+            currentCardView.setIcon(new ImageIcon(cardImage));
+            remove(cardView);
+            revalidate();
+
+            // add card to cardinplay on cardtable
+            //remove card when pressed
+//            System.out.println("i got ressed");
+
+        });
     }
 
     private BufferedImage cardResize(BufferedImage cardImage, int i, int i1, int typeIntArgb) {

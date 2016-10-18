@@ -22,11 +22,6 @@ public class HumanCardsPanel extends JPanel {
             ShowCardImg  cards = new ShowCardImg(card);
             add(cards);
         }
-    }
-//        game.printCards(game.players[0]); this is how you print players cards
-//        for (int i = 0; i < cards; i++){
-//            JButton playerCards = new JButton("CARD " + i);
-//            add(playerCards);
-//        }
-}
 
+    }
+}
