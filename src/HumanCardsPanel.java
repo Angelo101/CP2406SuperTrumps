@@ -17,7 +17,7 @@ public class HumanCardsPanel extends JPanel {
 
     public HumanCardsPanel(STPlayer player) throws IOException {
         super();
-        JButton addCard = new JButton("ASDFASDFASDFASDFAS");
+        JButton addCard = new JButton("Pick Up Cards");
         addCard.setVisible(true);
         add(addCard);
         addCard.addActionListener(new ActionListener() {
@@ -42,7 +42,8 @@ public class HumanCardsPanel extends JPanel {
 
 
     }
-    public void addCard(){
+
+    public void addCard() {
         STCard extraCard = deck.dealCards(1).remove(0);
         System.out.println(extraCard);
         try {

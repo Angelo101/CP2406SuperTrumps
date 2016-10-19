@@ -18,10 +18,11 @@ public class ShowCardImg extends JPanel {
     STDeck deck;
     STPlayer[] players;
     STGame game;
-    public ShowCardImg(STCard card) throws IOException{
+
+    public ShowCardImg(STCard card) throws IOException {
         try {
             cardImage = ImageIO.read(new File(workingDirectory + "/res/" + card.fileName));
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -43,13 +44,12 @@ public class ShowCardImg extends JPanel {
     }
 
     private BufferedImage cardResize(BufferedImage cardImage, int i, int i1, int typeIntArgb) {
-        BufferedImage cardResized = new BufferedImage(i, i1,typeIntArgb);
+        BufferedImage cardResized = new BufferedImage(i, i1, typeIntArgb);
         Graphics2D g = cardResized.createGraphics();
         g.drawImage(cardImage, 0, 0, i, i1, null);
         g.dispose();
         return cardResized;
     }
-
 
 
 }

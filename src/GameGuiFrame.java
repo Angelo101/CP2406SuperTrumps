@@ -27,7 +27,6 @@ public class GameGuiFrame extends JFrame {
         add(cardTable, BorderLayout.CENTER);
 
 
-
     }
 
 }

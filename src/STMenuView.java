@@ -52,37 +52,35 @@ public class STMenuView {
                 game.setHumanPlayer();
 
 
-
                 try {
                     GameGuiFrame gameGuiFrame = new GameGuiFrame(game.players);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
             }
-                private void playTheGame(){
-                    //game logic
-                    boolean gameIsOn = true;
-                    int currentPlayer = game.dealerId + 1;
-                    while (gameIsOn) {
-                        System.out.println();
-                        if (currentPlayer > game.players.length -1) {
-                            currentPlayer = 0;
-                        }
-                        if (currentPlayer == 0) {
-                            System.out.println(game.players[0]);
-                            game.printCards(game.players[0]);
-                            System.out.println("\nCurrent Category is: " + game.categoryInPlay);
-                            System.out.println("Current Card in play is: " + game.cardInPlay);
-                            game.humanPlayerTakeTurn();
 
-                        } else {
-                            game.aiTakeTurn();
-                        }
-                        currentPlayer += 1;
+            private void playTheGame() {
+                //game logic
+                boolean gameIsOn = true;
+                int currentPlayer = game.dealerId + 1;
+                while (gameIsOn) {
+                    System.out.println();
+                    if (currentPlayer > game.players.length - 1) {
+                        currentPlayer = 0;
                     }
+                    if (currentPlayer == 0) {
+                        System.out.println(game.players[0]);
+                        game.printCards(game.players[0]);
+                        System.out.println("\nCurrent Category is: " + game.categoryInPlay);
+                        System.out.println("Current Card in play is: " + game.cardInPlay);
+                        game.humanPlayerTakeTurn();
+
+                    } else {
+                        game.aiTakeTurn();
+                    }
+                    currentPlayer += 1;
                 }
-
-
+            }
 
 
         });
