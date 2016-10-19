@@ -13,7 +13,11 @@ public class ShowCardImg extends JPanel {
     BufferedImage cardImage;
     String workingDirectory = System.getProperty("user.dir");
     JButton cardView;
+    JButton addCard;
     JLabel currentCardView = CardTable.currentCardView;
+    STDeck deck;
+    STPlayer[] players;
+    STGame game;
     public ShowCardImg(STCard card) throws IOException{
         try {
             cardImage = ImageIO.read(new File(workingDirectory + "/res/" + card.fileName));
@@ -21,12 +25,14 @@ public class ShowCardImg extends JPanel {
             e.printStackTrace();
         }
 
-        cardImage = cardResize(cardImage, 250, 350, BufferedImage.TYPE_INT_ARGB);
+        cardImage = cardResize(cardImage, 100, 150, BufferedImage.TYPE_INT_ARGB);//250, 350
         cardView = new JButton(new ImageIcon(cardImage));
         add(cardView);
+
         cardView.addActionListener(e -> {
             currentCardView.setIcon(new ImageIcon(cardImage));
             remove(cardView);
+//            HumanCardsPanel humanCardsPanel = new HumanCardsPanel();
             revalidate();
 
             // add card to cardinplay on cardtable
@@ -43,6 +49,7 @@ public class ShowCardImg extends JPanel {
         g.dispose();
         return cardResized;
     }
+
 
 
 }

@@ -51,7 +51,7 @@ public class STMenuView {
                 game.dealRandomCards();
                 game.setHumanPlayer();
 
-//                playTheGame();
+
 
                 try {
                     GameGuiFrame gameGuiFrame = new GameGuiFrame(game.players);

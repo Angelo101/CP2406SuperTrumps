@@ -1,27 +1,55 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 /**
  * Created by noobtube on 16/10/2016.
  */
 public class HumanCardsPanel extends JPanel {
-    STPlayer player;
+    static STPlayer player;
+    static STPlayer[] players;
     STGame game;
-    STDeck cardd;
+    static STDeck deck = new STDeck();
+    static STCard card;
+    static HumanCardsPanel humanCardsPanel;
 
     public HumanCardsPanel(STPlayer player) throws IOException {
         super();
-        this.player = player;
+        JButton addCard = new JButton("ASDFASDFASDFASDFAS");
+        addCard.setVisible(true);
+        add(addCard);
+        addCard.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addCard();
+                revalidate();
+            }
+        });
+        HumanCardsPanel.player = player;
         setVisible(true);
         setLayout(new FlowLayout());
         setBackground(Color.BLACK);
 //        int numOfCardsInHand = player.cards.size();
-
-        for (STCard card: player.cards) {
-            ShowCardImg  cards = new ShowCardImg(card);
+//        players[0].cards.add(card);
+        for (STCard card : player.cards) {
+            ShowCardImg cards = new ShowCardImg(card);
             add(cards);
+
+
         }
 
+
+    }
+    public void addCard(){
+        STCard extraCard = deck.dealCards(1).remove(0);
+        System.out.println(extraCard);
+        try {
+            ShowCardImg card2 = new ShowCardImg(extraCard);
+            add(card2);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
     }
 }

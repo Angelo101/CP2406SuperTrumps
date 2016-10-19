@@ -8,7 +8,8 @@ import java.io.IOException;
  */
 public class GameGuiFrame extends JFrame {
     public HumanCardsPanel humanCardsPanel;
-    public CardTable cardTable = new CardTable();
+    STPlayer player;
+    public CardTable cardTable = new CardTable(player);
 
     public GameGuiFrame(STPlayer[] players) throws IOException {
         super("SUPER TRUMPS GAME");
@@ -24,6 +25,7 @@ public class GameGuiFrame extends JFrame {
         add(playerViewScroll, BorderLayout.SOUTH);
         add(cardTable, BorderLayout.NORTH);
         add(cardTable, BorderLayout.CENTER);
+
 
 
     }
