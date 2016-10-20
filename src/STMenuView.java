@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * Created by noobtube on 15/10/2016.
@@ -13,9 +14,8 @@ public class STMenuView {
     private JButton instructionsButton;
     private JButton playGameButton;
     private JComboBox selectPlayers;
-    public STGame game;
-//    public SelectCategoryGui selectCategoryGui;
-//    public SelectCategoryGui selectCategoryGui;
+
+    public static STGame game = new STGame();
 
     public STMenuView() {
         frame = new JFrame("SUPER TRUMPS CARD GAME");
@@ -46,43 +46,15 @@ public class STMenuView {
         playGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                game = new STGame();
                 game.selectDealer();
                 game.dealRandomCards();
                 game.setHumanPlayer();
-
-
                 try {
                     GameGuiFrame gameGuiFrame = new GameGuiFrame(game.players);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
             }
-
-            private void playTheGame() {
-                //game logic
-                boolean gameIsOn = true;
-                int currentPlayer = game.dealerId + 1;
-                while (gameIsOn) {
-                    System.out.println();
-                    if (currentPlayer > game.players.length - 1) {
-                        currentPlayer = 0;
-                    }
-                    if (currentPlayer == 0) {
-                        System.out.println(game.players[0]);
-                        game.printCards(game.players[0]);
-                        System.out.println("\nCurrent Category is: " + game.categoryInPlay);
-                        System.out.println("Current Card in play is: " + game.cardInPlay);
-                        game.humanPlayerTakeTurn();
-
-                    } else {
-                        game.aiTakeTurn();
-                    }
-                    currentPlayer += 1;
-                }
-            }
-
-
         });
         JLabel numberOfPlayersString = new JLabel("Select the number of players");
         selectPlayers.addActionListener(new ActionListener() {
@@ -93,8 +65,6 @@ public class STMenuView {
                 STGame.setNumPlayers(numPlayers);
             }
         });
-
-
         selectPlayers.addItem(2);
         selectPlayers.addItem(3);
         selectPlayers.addItem(4);
@@ -104,8 +74,22 @@ public class STMenuView {
         panel.add(selectPlayers);
         frame.add(panel);
         frame.revalidate();
-
-
     }
-
+    public static void aiPlayCard() {
+        Random rand = new Random();
+        if (rand.nextInt(10) < 5) {
+            STCard aiCard = game.players[1].cards.remove(rand.nextInt(game.players[1].cards.size()));
+            if (STMenuView.game.players[1].cards.size() == 0) {
+                JOptionPane.showMessageDialog(null, "COMPUTER WINS!");
+                System.exit(1);
+            }
+            System.out.println("this is the mothefuckin card\n" + aiCard);
+            try {
+                ShowCardImg card3 = new ShowCardImg(aiCard);
+                CardTable.currentCardView.setIcon(new ImageIcon(card3.cardImage));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
 }

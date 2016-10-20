@@ -23,25 +23,22 @@ public class HumanCardsPanel extends JPanel {
         addCard.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 addCard();
                 revalidate();
+                STMenuView.aiPlayCard();
             }
         });
         HumanCardsPanel.player = player;
         setVisible(true);
         setLayout(new FlowLayout());
         setBackground(Color.BLACK);
-//        int numOfCardsInHand = player.cards.size();
-//        players[0].cards.add(card);
         for (STCard card : player.cards) {
             ShowCardImg cards = new ShowCardImg(card);
             add(cards);
-
-
         }
-
-
     }
+
 
     public void addCard() {
         STCard extraCard = deck.dealCards(1).remove(0);

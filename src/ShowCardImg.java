@@ -13,11 +13,7 @@ public class ShowCardImg extends JPanel {
     BufferedImage cardImage;
     String workingDirectory = System.getProperty("user.dir");
     JButton cardView;
-    JButton addCard;
     JLabel currentCardView = CardTable.currentCardView;
-    STDeck deck;
-    STPlayer[] players;
-    STGame game;
 
     public ShowCardImg(STCard card) throws IOException {
         try {
@@ -25,21 +21,22 @@ public class ShowCardImg extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         cardImage = cardResize(cardImage, 100, 150, BufferedImage.TYPE_INT_ARGB);//250, 350
         cardView = new JButton(new ImageIcon(cardImage));
         add(cardView);
-
         cardView.addActionListener(e -> {
+            STMenuView.game.players[0].cards.size();
             currentCardView.setIcon(new ImageIcon(cardImage));
             remove(cardView);
-//            HumanCardsPanel humanCardsPanel = new HumanCardsPanel();
+            STMenuView.game.players[0].cards.remove(card);
+            System.out.println(STMenuView.game.players[0].cards.size());
             revalidate();
-
-            // add card to cardinplay on cardtable
-            //remove card when pressed
-//            System.out.println("i got ressed");
-
+            if (STMenuView.game.players[0].cards.size() == 0) {
+                JOptionPane.showMessageDialog(null, "CONGRATULATIONS YOU WON!");
+                System.exit(1);
+            }
+            STMenuView.aiPlayCard();
+            revalidate();
         });
     }
 

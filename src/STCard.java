@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -6,7 +7,7 @@ import java.util.ArrayList;
 
 //TODO: Fix Occurrence not displaying when printed
 
-public class STCard {
+public class STCard extends JLabel {
     private String cardType, title, chemistry, classification, crystalSystem, cleavage, crustalAbundance, economicValue, occurString;
     private ArrayList<String> occurrence = new ArrayList<>();
     private double hardness, specificGravity;

@@ -50,6 +50,7 @@ public class STGame {
         int aiChoice;
         STPlayer aiPlayer = players[A1STGame.currentPlayer];
         int aiCount = aiPlayer.cards.size();
+//        cardInPlay = aiPlayer.cards.remove(rand.nextInt(aiPlayer.cards.size() - 1));
 
         if (categoryInPlay == null) {
             categoryInPlay = aiChoosesCategory();
