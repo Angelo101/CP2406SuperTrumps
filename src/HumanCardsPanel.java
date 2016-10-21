@@ -23,9 +23,13 @@ public class HumanCardsPanel extends JPanel {
         addCard.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+//                STMenuView.PLAYERCOUNT +=1;
                 addCard();
                 revalidate();
+//                if(STMenuView.PLAYERCOUNT ==3){
+//                    STMenuView.PLAYERCOUNT = 0;
+//                }
+                JOptionPane.showMessageDialog(null, "Computer is selecting a card to play");
                 STMenuView.aiPlayCard();
             }
         });

@@ -9,9 +9,9 @@ import java.io.IOException;
  */
 public class SelectCategoryGui extends JFrame {
     public STGame game;
-    public String categoryInPlay;
+    public static String categoryInPlay;
 
-    public String getCategory() {
+    public static String getCategory() {
         Object[] categories = {"Hardness", "Specific Gravity", "Cleavage", "Crustal Abundance", "Economic Value"};
         int n = -1;
         while (n == -1) {

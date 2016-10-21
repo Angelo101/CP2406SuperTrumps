@@ -1,4 +1,7 @@
+import jdk.nashorn.internal.objects.Global;
+
 import javax.swing.*;
+import javax.xml.bind.annotation.XmlElementDecl;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,10 +17,12 @@ public class STMenuView {
     private JButton instructionsButton;
     private JButton playGameButton;
     private JComboBox selectPlayers;
+    public static int PLAYERCOUNT;
 
     public static STGame game = new STGame();
 
     public STMenuView() {
+
         frame = new JFrame("SUPER TRUMPS CARD GAME");
         frame.setVisible(true);
         frame.setSize(500, 500);
@@ -46,6 +51,7 @@ public class STMenuView {
         playGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 game.selectDealer();
                 game.dealRandomCards();
                 game.setHumanPlayer();
@@ -54,7 +60,9 @@ public class STMenuView {
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
+                //game logic
             }
+
         });
         JLabel numberOfPlayersString = new JLabel("Select the number of players");
         selectPlayers.addActionListener(new ActionListener() {
@@ -77,13 +85,14 @@ public class STMenuView {
     }
     public static void aiPlayCard() {
         Random rand = new Random();
+//        PLAYERCOUNT ++;
         if (rand.nextInt(10) < 5) {
+            JOptionPane.showMessageDialog(null, "Computer Can play a card");
             STCard aiCard = game.players[1].cards.remove(rand.nextInt(game.players[1].cards.size()));
             if (STMenuView.game.players[1].cards.size() == 0) {
                 JOptionPane.showMessageDialog(null, "COMPUTER WINS!");
                 System.exit(1);
             }
-            System.out.println("this is the mothefuckin card\n" + aiCard);
             try {
                 ShowCardImg card3 = new ShowCardImg(aiCard);
                 CardTable.currentCardView.setIcon(new ImageIcon(card3.cardImage));
@@ -91,5 +100,9 @@ public class STMenuView {
                 e1.printStackTrace();
             }
         }
+        else {JOptionPane.showMessageDialog(null, "Computer Cannont play a card");
+
+        }
+
     }
 }

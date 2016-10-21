@@ -12,6 +12,7 @@ import java.util.Random;
 public class CardTable extends JPanel {
     static JLabel currentCardView;
 
+
     public CardTable() throws IOException {
 
         super();

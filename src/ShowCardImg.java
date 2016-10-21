@@ -15,6 +15,7 @@ public class ShowCardImg extends JPanel {
     JButton cardView;
     JLabel currentCardView = CardTable.currentCardView;
 
+
     public ShowCardImg(STCard card) throws IOException {
         try {
             cardImage = ImageIO.read(new File(workingDirectory + "/res/" + card.fileName));
@@ -25,6 +26,10 @@ public class ShowCardImg extends JPanel {
         cardView = new JButton(new ImageIcon(cardImage));
         add(cardView);
         cardView.addActionListener(e -> {
+//            STMenuView.PLAYERCOUNT +=1;
+//            if(STMenuView.PLAYERCOUNT ==3){
+//                STMenuView.PLAYERCOUNT = 0;
+//            }
             STMenuView.game.players[0].cards.size();
             currentCardView.setIcon(new ImageIcon(cardImage));
             remove(cardView);
@@ -35,6 +40,7 @@ public class ShowCardImg extends JPanel {
                 JOptionPane.showMessageDialog(null, "CONGRATULATIONS YOU WON!");
                 System.exit(1);
             }
+            JOptionPane.showMessageDialog(null, "Computer is selecting a card to play");
             STMenuView.aiPlayCard();
             revalidate();
         });
@@ -47,6 +53,5 @@ public class ShowCardImg extends JPanel {
         g.dispose();
         return cardResized;
     }
-
 
 }
